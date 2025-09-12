@@ -43,11 +43,9 @@
         "watch": "tsc --watch",
         "serve": "webpack serve"
     },
-    "dependencies": {
-    },
     "devDependencies": {
-        "typescript": "^5.4.5",
-        "vite": "^5.2.11",
+        "typescript": "^5.7.3",
+        "vite": "^6.1.0",
         "vite-plugin-clean": "^1.0.0"
     }
 }
