@@ -1,51 +1,62 @@
 {
-    "version": "1.0.6",
-    "description": "via.js",
-    "name": "via.js",
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-        ".": {
-            "import": "./dist/index.js",
-            "types": "./dist/index.d.ts"
-        },
-        "./controller": {
-            "import": "./dist/controller/index.js",
-            "types": "./dist/controller/index.d.ts"
-        },
-        "./receiver": {
-            "import": "./dist/receiver/index.js",
-            "types": "./dist/receiver/index.d.ts"
-        }
+  "version": "1.0.6",
+  "description": "via.js",
+  "name": "via.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
-    "//typesVersions": {
-        "*": {
-            ".": [
-                "./dist/index.d.ts"
-            ],
-            "./controller": [
-                "./dist/controller/index.d.ts"
-            ],
-            "./receiver": [
-                "./dist/receiver/index.d.ts"
-            ]
-        }
+    "./controller": {
+      "import": "./dist/controller/index.js",
+      "types": "./dist/controller/index.d.ts"
     },
-    "scripts": {
-        "git": "git add . && git commit -m \"Bump version\" && git push",
-        "bump": "pnpm version patch",
-        "npmjs": "pnpm publish",
-        "release": "run-s -c git bump npmjs",
-        "declaration": "tsc --declaration --emitDeclarationOnly --declarationMap",
-        "declaration:watch": "tsc --declaration --emitDeclarationOnly  --declarationMap--watch",
-        "preinstall": "npx only-allow pnpm",
-        "build": "tsc",
-        "watch": "tsc --watch",
-        "serve": "webpack serve"
-    },
-    "devDependencies": {
-        "typescript": "^5.7.3",
-        "vite": "^6.1.0",
-        "vite-plugin-clean": "^1.0.0"
+    "./receiver": {
+      "import": "./dist/receiver/index.js",
+      "types": "./dist/receiver/index.d.ts"
     }
+  },
+  "//typesVersions": {
+    "*": {
+      ".": [
+        "./dist/index.d.ts"
+      ],
+      "./controller": [
+        "./dist/controller/index.d.ts"
+      ],
+      "./receiver": [
+        "./dist/receiver/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "git": "git add . && git commit -m \"Bump version\" && git push",
+    "bump": "pnpm version patch",
+    "npmjs": "pnpm publish",
+    "release": "run-s -c git bump npmjs",
+    "declaration": "tsc --declaration --emitDeclarationOnly --declarationMap",
+    "declaration:watch": "tsc --declaration --emitDeclarationOnly  --declarationMap--watch",
+    "preinstall": "npx only-allow pnpm",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "webpack serve",
+    "commit": "cz",
+    "changelog": "git-cliff -o CHANGELOG.md",
+    "release:automatic": "semantic-release --extends ../semantic-release.config.js",
+    "commit:help": "echo 'Usage: pnpm run commit' && echo 'This will start the commitizen wizard to create a conventional commit.' && echo 'Follow the prompts to enter commit type, scope, and message.'"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vite-plugin-clean": "^1.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "woby": "workspace:../woby",
+      "@woby/styled": "workspace:../styled",
+      "@woby/use": "workspace:../use"
+    }
+  }
 }
