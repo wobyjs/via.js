@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  woby: workspace:../woby
-  '@woby/styled': workspace:../styled
-  '@woby/use': workspace:../use
-
 importers:
 
   .:

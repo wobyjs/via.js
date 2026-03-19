@@ -1,5 +1,5 @@
 {
-  "version": "1.0.6",
+  "version": "1.0.16",
   "description": "via.js",
   "name": "via.js",
   "main": "./dist/index.js",
@@ -32,18 +32,17 @@
     }
   },
   "scripts": {
-    "git": "git add . && git commit -m \"Bump version\" && git push",
-    "bump": "pnpm version patch",
-    "npmjs": "pnpm publish",
-    "release": "run-s -c git bump npmjs",
+    "bump": "pnpm version patch --no-git-tag-version",
+    "push": "git push && git push --tags",
+    "npmjs": "pnpm publish --access public",
+    "commit": "cz",
+    "release": "run-s -c commit npmjs",
     "declaration": "tsc --declaration --emitDeclarationOnly --declarationMap",
     "declaration:watch": "tsc --declaration --emitDeclarationOnly  --declarationMap--watch",
     "preinstall": "npx only-allow pnpm",
-    "build": "tsc",
+    "build": "tsc && pnpm bump",
     "watch": "tsc --watch",
     "serve": "webpack serve",
-    "commit": "cz",
-    "changelog": "git-cliff -o CHANGELOG.md",
     "release:automatic": "semantic-release --extends ../semantic-release.config.js",
     "commit:help": "echo 'Usage: pnpm run commit' && echo 'This will start the commitizen wizard to create a conventional commit.' && echo 'Follow the prompts to enter commit type, scope, and message.'"
   },
@@ -51,12 +50,5 @@
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
     "vite-plugin-clean": "^1.0.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "woby": "workspace:../woby",
-      "@woby/styled": "workspace:../styled",
-      "@woby/use": "workspace:../use"
-    }
   }
 }
